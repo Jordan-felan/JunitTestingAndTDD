@@ -1,4 +1,6 @@
-public class FizzBuzz implements IFizzBuzz{
+import interfaces.IFizzBuzz;
+
+public class FizzBuzz implements IFizzBuzz {
     public String generate(int input){
         String result = "";
 
