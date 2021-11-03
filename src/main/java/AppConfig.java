@@ -3,17 +3,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-    @Bean(name = "IIsInteger")
+    @Bean(name = "iIsInteger")
     public IsInteger createIsInteger(){
         return new IsInteger();
     };
 
-    @Bean(name = "IBoundaryChecker")
+    @Bean(name = "iBoundaryChecker")
     public BoundaryChecker createBoundaryChecker(){
         return new BoundaryChecker();
     }
 
-    @Bean(name = "IFizzBuzz")
+    @Bean(name = "iFizzBuzz")
     public FizzBuzz createFizzBuzz(){
         return new FizzBuzz();
     }
