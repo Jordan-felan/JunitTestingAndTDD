@@ -79,40 +79,55 @@ public class FlowControlTest {
 
     @Test
     public void given0CallIsInsideBoundaryOnce() {
+//        Given: I am a user
         given(_intCheck.isTypeInt("0")).willReturn(true);
         given(_boundaryChecker.isInsideBoundary(0)).willReturn(true);
+//        When: I enter the string “0”
         _flowControl.run("0");
+//        Then: Call isInBoundary() once
         verify(_boundaryChecker, times(1)).isInsideBoundary(0);
 
     }
 
     @Test
     public void given0DoNotCallFizzBuzz(){
-        given(_fizzbuzz.generate(0)).willReturn(anyString());
+//        Given: I am a user
+        given(_fizzbuzz.generate(0)).willReturn("0");
+//        When: I enter the string “0”
         _flowControl.run("0");
+//        Then: fizzBuzz() is called 0 times
         verify(_fizzbuzz, never()).generate(anyInt());
     }
 
     @Test
     public void givenBobCallIsIntegerOnce(){
+//        Given: I am a user
         given(_intCheck.isTypeInt("bob")).willReturn(false);
+//        When: I enter the string “Bob”
         _flowControl.run("bob");
+//        Then: Call isInteger() once
         verify(_intCheck, times(1)).isTypeInt("bob");
     }
 
     @Test
-    public void givenBobDoNotCallIsIntegerOnce(){
+    public void givenBobDoNotCallIsInsideBoundary(){
+//        Given: I am a user
         given(_intCheck.isTypeInt("bob")).willReturn(false);
         given(_boundaryChecker.isInsideBoundary(anyInt())).willReturn(anyBoolean());
+//        When: I enter the string “Bob”
         _flowControl.run("bob");
+//        Then: Call isInBoundary() is called 0 times
         verify(_boundaryChecker, never()).isInsideBoundary(anyInt());
     }
 
 
     @Test
     public void givenBobDoNotCallFizzBuzz() {
+//        Given: I am a user
         given(_fizzbuzz.generate(anyInt())).willReturn(anyString());
+//        When: I enter the string “Bob”
         _flowControl.run("bob");
+//        Then: fizzBuzz() is called 0 times
         verify(_fizzbuzz, never()).generate(anyInt());
     }
 
