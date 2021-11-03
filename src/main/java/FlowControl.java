@@ -19,9 +19,12 @@ public class FlowControl implements IFlowControl {
         if (_iIsInt.isTypeInt(input)){
             int intInput = Integer.parseInt(input);
             if(_boundaryChecker.isInsideBoundary(intInput)){
-                _fizzbuzz.generate(intInput);
+               String result = _fizzbuzz.generate(intInput);
+                System.out.println(result);
+                return;
             }
-        };
+        }
+        System.out.println("Please enter an integer between 1 and 300");
 
 
     }
