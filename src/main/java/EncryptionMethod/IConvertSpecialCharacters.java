@@ -1,5 +1,5 @@
 package EncryptionMethod;
 
-public interface ICharToNumberConverter {
+public interface IConvertSpecialCharacters {
     String convert(String input);
 }

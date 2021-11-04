@@ -1,19 +1,17 @@
 package EncryptionMethod;
 
 
-import org.apache.commons.lang3.ArrayUtils;
-
-import java.util.ArrayList;
-
-public class CharToNumberConverter implements ICharToNumberConverter{
+public class ConvertInputPosition implements IConvertInputPosition {
 
 
     public String convert(String input){
         String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        int index = letters.indexOf(input);
-        int convertedIndex = (index + 1) * 2;
+        int index = (letters.indexOf(input) + 1) * 2;
+        if(index > 52){
+            index -= 52;
+        }
 
-        return String.valueOf(convertedIndex);
+        return String.valueOf(letters.charAt(index - 1));
 //        ArrayList<String> lettersList = new ArrayList<>();
 //
 //        String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
