@@ -29,14 +29,35 @@ public class FlowControlTest {
     @InjectMocks
     private FlowControl flowControl;
 
+
     @Test
-    public void ShouldCallConvertOnceWhenInputIsJo_14(){
+    public void ShouldCallConvertInputPosition1TimeWhen_a_IsEntered(){
+        //given:i am a user
+        //When:i enter "a"
+        flowControl.encrypt("a");
+        //Then:ConvertInputPosition is called once
+        then(cipMock).should(times(1)).convert("a");
+    }
+
+    @Test
+    public void ShouldCallConvertInputPositionTwiceWhenInputIs_b_IsEntered(){
         //Given: I am a user;
         //When: i enter "jo 14"
-        String letters = flowControl.encrypt("Jo 14");
-        //Then: i should get back tD__96
-   then(cipMock).should(times(1)).convert("J");
+        flowControl.encrypt("b");
+        //Then:ConvertInputPosition is called once
+   then(cipMock).should(times(1)).convert("b");
 
+
+    }
+
+    @Test
+    public void ShouldCallConvertInputPositionTwiceWhenInputIs_ab_IsEntered(){
+        //Given: I am a user;
+        //When: i enter "ab"
+        flowControl.encrypt("ab");
+        //Then:ConvertInputPosition is called twice
+        then(cipMock).should(times(1)).convert("a");
+        then(cipMock).should(times(1)).convert("b");
 
     }
 }
